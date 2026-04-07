@@ -1,4 +1,4 @@
-const API_KEY = "39d6dee590d13d30326f7815aaaeeaed"; // 🔥 MUST BE ACTIVE
+const API_KEY = "39d6dee590d13d30326f7815aaaeeaed"; 
 
 export async function fetchWeather(city) {
     const res = await fetch(
