@@ -6,17 +6,16 @@ import { getLocation } from "./js/location.js";
 let currentUnit = "C";
 let currentCity = "";
 
-// 🔍 LOAD CITY
+
 async function loadCity(city) {
     try {
-        city = city.trim(); // ✅ fix
+        city = city.trim(); 
 
         const data = await fetchWeather(city);
         currentCity = data.name;
 
         updateMainUI(data, currentUnit);
 
-        // ✅ Forecast
         const forecast = await fetchForecast(city);
        renderHourly(forecast, currentUnit);
 renderDaily(forecast, currentUnit);
@@ -29,7 +28,7 @@ if (aqi) updateAQI(aqi);
     }
 }
 
-// 🔎 SEARCH BUTTON FIX
+
 document.getElementById("searchBtn").addEventListener("click", () => {
     const val = document.getElementById("searchInput").value;
     loadCity(val);
@@ -40,7 +39,7 @@ document.getElementById("searchInput").addEventListener("keydown", (e) => {
     if (e.key === "Enter") loadCity(e.target.value);
 });
 
-// 📍 GPS
+
 document.getElementById("locateBtn").addEventListener("click", () => {
     getLocation(async (lat, lon) => {
         const data = await fetchByCoords(lat, lon);
@@ -66,7 +65,7 @@ document.getElementById("unitF").onclick = () => {
     if (currentCity) loadCity(currentCity);
 };
 
-// ⭐ FAVORITES (IMPROVED)
+//  FAVORITES (IMPROVED)
 document.getElementById("favBtn").addEventListener("click", () => {
     let favs = JSON.parse(localStorage.getItem("fav")) || [];
 
@@ -79,7 +78,7 @@ document.getElementById("favBtn").addEventListener("click", () => {
     }
 });
 
-// ❌ ERROR UI
+//  ERROR UI
 function showError(msg) {
     const err = document.getElementById("errorUI");
     document.getElementById("errorMessage").innerText = msg;
@@ -88,5 +87,5 @@ function showError(msg) {
 }
 
 
-// 🚀 INIT
+//  INIT
 loadCity("Chennai");
