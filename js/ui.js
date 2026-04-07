@@ -5,7 +5,7 @@ export function updateMainUI(data, unit) {
         ? Math.round(data.main.temp)
         : Math.round((data.main.temp * 9/5) + 32);
 
-    // ✅ FIX: show unit
+    
     document.querySelector(".temp-display").innerText = `${temp}°${unit}`;
 
     document.querySelector(".humidity-val").innerText =
@@ -25,12 +25,12 @@ export function updateMainUI(data, unit) {
 }
 
 export function updateAQI(aqiData) {
-    if (!aqiData) return; // ✅ prevent crash
+    if (!aqiData) return; 
 
     const val = aqiData.list[0].main.aqi;
     const map = ["Good", "Fair", "Moderate", "Poor", "Very Poor"];
 
-    // ❌ REMOVED aqiBadge (not in your HTML)
+    
     document.querySelector(".aqi-idx").innerText =
         `${val} - ${map[val - 1]}`;
 }
